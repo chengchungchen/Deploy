@@ -9,7 +9,7 @@ if [ ! -f ~/.ssh/authorized_keys ]; then
 	touch ~/.ssh/authorized_keys
 fi
 
-cat ~/keygen/cc_chen_10.1.77.213.pub >> ~/.ssh/authorized_keys
+cat ~/keygen/ccchen.pub >> ~/.ssh/authorized_keys
 
 if [ ! -f /etc/ssh/sshd_config.default ]; then
 	cp /etc/ssh/sshd_config /etc/ssh/sshd_config.default
