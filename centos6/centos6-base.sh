@@ -49,3 +49,13 @@ fi
 echo 'rocommunity YamFM' > /etc/snmp/snmpd.conf
 /etc/init.d/snmpd start
 chkconfig snmpd on
+
+# Setting Fail2Ban
+yum install -y fail2ban
+cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.conf.default
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.default
+sed -i 's/logtarget = SYSLOG/logtarget = \/var\/log\/fail2ban.log/g' /etc/fail2ban/fail2ban.conf
+sed -i 's/sender=fail2ban@example.com/sender=fail2ban@yam.com/g' /etc/fail2ban/jail.conf
+sed -i 's/dest=you@example.com/dest=chengchungchen@talk2yam.com/g' /etc/fail2ban/jail.conf
+/etc/init.d/fail2ban start
+chkconfig fail2ban on
