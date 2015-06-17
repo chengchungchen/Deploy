@@ -44,3 +44,9 @@ fi
 echo 'rocommunity YamFM' > /etc/snmp/snmpd.conf
 /etc/init.d/snmpd start
 service snmpd on
+
+# Setting Fail2Ban
+apt-get install -y fail2ban
+cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.conf.default
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.default
+service fail2ban start
