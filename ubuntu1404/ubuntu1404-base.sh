@@ -22,7 +22,7 @@ set -o nounset                              # Treat unset variables as an error
 apt-get install -y aptitude screen ntpdate vim snmpd iptables-persistent sysv-rc-conf lsb-core
 
 # Turn off 'Ctrl+Alt+Delete' to reboot
-sed -i '$s/exec/#exec/g' /etc/init/control-alt-delete.conf
+sed -i 's/exec/#exec/g' /etc/init/control-alt-delete.conf
 
 # Setting routine for timing
 echo '0 1 * * * /usr/sbin/ntpdate -s ntp1.yam.com > /dev/null 2>&1' >> /etc/cron.d/sys
@@ -41,9 +41,13 @@ sed -i '$a /usr/local/lib64' /etc/ld.so.conf
 if [ ! -f /etc/snmp/snmpd.conf-default ]; then
 	cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf-default
 fi
-echo 'rocommunity YamFM' > /etc/snmp/snmpd.conf
-/etc/init.d/snmpd start
-service snmpd on
+echo "rocommunity YamFM" > /etc/snmp/snmpd.conf
+service snmpd start
+
+# Disable snmp normal logging
+cp /etc/default/snmpd /root/defaultfile/etc.default.snmpd
+sed -i 's/-Lsd -Lf/-LSwd -Lf/g' /etc/default/snmpd
+service snmpd restart
 
 # Setting Fail2Ban
 apt-get install -y fail2ban
