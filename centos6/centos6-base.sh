@@ -50,7 +50,7 @@ echo 'rocommunity YamFM' > /etc/snmp/snmpd.conf
 /etc/init.d/snmpd start
 chkconfig snmpd on
 
-# Disable nomoreal logging for snmpd
+# Disable normal logging for snmpd
 if [ ! -f /etc/init.d/snmpd-default ]; then
 	cp /etc/init.d/snmpd /etc/init.d/snmpd-default
 fi
