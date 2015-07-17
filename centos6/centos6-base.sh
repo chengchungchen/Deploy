@@ -50,6 +50,14 @@ echo 'rocommunity YamFM' > /etc/snmp/snmpd.conf
 /etc/init.d/snmpd start
 chkconfig snmpd on
 
+# Disable nomoreal logging for snmpd
+if [ ! -f /etc/init.d/snmpd-default ]; then
+	cp /etc/init.d/snmpd /etc/init.d/snmpd-default
+fi
+sed -i 's/-LS0-6d/-LS0-5d/g' /etc/init.d/snmpd
+/etc/init.d/snmpd restart
+chkconfig snmpd on
+
 # Setting Fail2Ban
 yum install -y fail2ban
 cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.conf.default
