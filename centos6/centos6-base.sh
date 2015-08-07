@@ -3,7 +3,7 @@
 # WARNINGS! This only for CentOS6!
 
 # Install the base softwares.
-yum install -y wget mlocate ntsysv openssh-clients screen ntpdate net-snmp redhat-lsb vim
+yum install -y wget mlocate ntsysv openssh-clients screen ntpdate net-snmp redhat-lsb vim tmux
 #wget http://mirror01.idc.hinet.net/EPEL/6/i386/epel-release-6-8.noarch.rpm
 # Install EPEL & SCL
 yum install -y epel-release centos-release-SCL

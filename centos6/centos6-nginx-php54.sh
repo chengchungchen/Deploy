@@ -27,7 +27,7 @@ ln -s /opt/rh/php54/root/usr/bin/phpize /usr/bin/phpize
 
 # Setting the nginx
 mkdir -p /home/www
-mkdir -p /home/log/nginx
+#mkdir -p /home/log/nginx
 chown -R nginx:nginx /home/www
 mkdir -p /etc/nginx/sites-available
 mkdir -p /etc/nginx/sites-enabled
@@ -48,14 +48,14 @@ fi
 cp -f ./nginx.conf /etc/nginx/nginx.conf
 
 # Setting the PHP54
-mkdir -p /home/log
-touch /home/log/php-fpm.log
+#mkdir -p /home/log
+#touch /home/log/php-fpm.log
 
 # Setting the php-fpm.conf
 if [ ! -f /opt/rh/php54/root/etc/php-fpm.conf.default ]; then
 	cp /opt/rh/php54/root/etc/php-fpm.conf /opt/rh/php54/root/etc/php-fpm.conf.default
 fi
-sed -i 's/opt\/rh\/php54\/root\/var\/log\/php-fpm\/error.log/home\/log\/php-fpm.log/g' /opt/rh/php54/root/etc/php-fpm.conf
+#sed -i 's/opt\/rh\/php54\/root\/var\/log\/php-fpm\/error.log/home\/log\/php-fpm.log/g' /opt/rh/php54/root/etc/php-fpm.conf
 
 # Setting the php.ini
 if [ ! -f /opt/rh/php54/root/etc/php.ini.default ]; then
