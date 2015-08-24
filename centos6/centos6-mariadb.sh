@@ -20,7 +20,7 @@ yum install -y MariaDB-Galera-server MariaDB-client galera socat
 
 # Install Percona XtraBACKUP
 yum install -y http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
-yum install -y xtrabackup
+yum install -y xtrabackup pigz
 
 # Create DB directory
 mkdir -p /home/mysql

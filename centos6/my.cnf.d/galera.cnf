@@ -36,3 +36,13 @@ wsrep_sst_auth="sstuser:s3cret"
 
 # Enable MyISAM wsrep replicate
 wsrep_replicate_myisam=ON
+
+# 2 * cat /proc/cpuinfo|grep "model name"|wc -l
+wsrep_slave_threads = 16
+
+#wsrep_sst_donor =
+
+[sst]
+inno-apply-opts="--use-memory=1G"
+#compressor="pigz"
+#decompressor="pigz -d"
