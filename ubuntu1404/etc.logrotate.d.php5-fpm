@@ -5,6 +5,6 @@
     sharedscripts
     delaycompress
     postrotate
-	/bin/kill -SIGUSR1 `cat /opt/rh/php54/root/var/run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+        /usr/lib/php5/php5-fpm-reopenlogs
     endscript
 }
