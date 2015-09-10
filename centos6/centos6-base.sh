@@ -62,8 +62,19 @@ chkconfig snmpd on
 yum install -y fail2ban
 cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.conf.default
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.default
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 sed -i 's/logtarget = SYSLOG/logtarget = \/var\/log\/fail2ban.log/g' /etc/fail2ban/fail2ban.conf
-sed -i 's/sender=fail2ban@example.com/sender=fail2ban@yam.com/g' /etc/fail2ban/jail.conf
-sed -i 's/dest=you@example.com/dest=chengchungchen@talk2yam.com/g' /etc/fail2ban/jail.conf
+sed -i 's/sender=fail2ban@example.com/sender=fail2ban@yam.com/g' /etc/fail2ban/jail.local
+sed -i 's/dest=you@example.com/dest=chengchungchen@talk2yam.com/g' /etc/fail2ban/jail.local
 /etc/init.d/fail2ban start
 chkconfig fail2ban on
+
+# Adding time stamp to history
+if [ ! -f /etc/profile.default ]; then
+    cp /etc/profile /etc/profile.default
+fi
+sed -i '$G' /etc/profile
+sed -i '$a # Adding time stamp to history' /etc/profile
+sed -i '$a HISTTIMEFORMAT="<%F %T>:"' /etc/profile
+sed -i '$a export HISTTIMEFORMAT' /etc/profile
+source /etc/profile

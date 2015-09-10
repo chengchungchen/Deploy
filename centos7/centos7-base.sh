@@ -50,3 +50,13 @@ fi
 echo 'rocommunity YamFM' > /etc/snmp/snmpd.conf
 /etc/init.d/snmpd start
 chkconfig snmpd on
+
+# Adding time stamp to history
+if [ ! -f /etc/profile.default ]; then
+    cp /etc/profile /etc/profile.default
+fi
+sed -i '$G' /etc/profile
+sed -i '$a # Adding time stamp to history' /etc/profile
+sed -i '$a HISTTIMEFORMAT="<%F %T>:"' /etc/profile
+sed -i '$a export HISTTIMEFORMAT' /etc/profile
+source /etc/profil

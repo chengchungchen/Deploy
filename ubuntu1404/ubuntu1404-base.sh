@@ -54,3 +54,13 @@ apt-get install -y fail2ban
 cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.conf.default
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.default
 service fail2ban start
+
+# Adding time stamp to history
+if [ ! -f /etc/profile.default ]; then
+    cp /etc/profile /etc/profile.default
+fi
+sed -i '$G' /etc/profile
+sed -i '$a # Adding time stamp to history' /etc/profile
+sed -i '$a HISTTIMEFORMAT="<%F %T>:"' /etc/profile
+sed -i '$a export HISTTIMEFORMAT' /etc/profile
+source /etc/profile
