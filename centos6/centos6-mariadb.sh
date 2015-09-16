@@ -45,7 +45,7 @@ cp -f my.cnf /etc/my.cnf
 cp -rf my.cnf.d /etc/
 
 mkdir -p /root/defaultfile
-if [ ! -f /etc/logrotate.d/mysql ]; then
+if [ -f /etc/logrotate.d/mysql ]; then
         mv /etc/logrotate.d/mysql /root/defaultfile/etc.logrotate.d.mysql
 fi
 cp -f etc.logrotate.d.mysql /etc/logrotate.d/mysql
