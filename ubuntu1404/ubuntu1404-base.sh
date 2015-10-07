@@ -19,7 +19,7 @@
 set -o nounset                              # Treat unset variables as an error
 
 # Install the base softwares.
-apt-get install -y aptitude screen ntpdate vim snmpd iptables-persistent sysv-rc-conf lsb-core
+apt-get install -y aptitude screen ntpdate vim snmpd iptables-persistent sysv-rc-conf lsb-core telnet
 
 # Turn off 'Ctrl+Alt+Delete' to reboot
 sed -i 's/exec/#exec/g' /etc/init/control-alt-delete.conf
