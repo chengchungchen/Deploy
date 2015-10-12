@@ -18,15 +18,15 @@ apt-get update
 apt-get install -y mariadb-server mariadb-client
 
 # Create DB directory
-mkdir -p /home/mysql
-chown -R mysql:mysql /home/mysql
-chmod 700 /home/mysql
-rsync -av -default /var/lib/mysql/* /home/mysql
+mkdir -p /srv/mysql
+chown -R mysql:mysql /srv/mysql
+chmod 700 /srv/mysql
+rsync -av -default /var/lib/mysql/* /srv/mysql
 
 # Create DB log directory
-mkdir -p /home/log/mysql
-touch /home/log/mysql/mysql-slow-queries.log
-chown mysql /home/log/mysql/mysql-slow-queries.log
+mkdir -p /var/log/mysql
+touch /var/log/mysql/mysql-slow-queries.log
+chown mysql /var/log/mysql/mysql-slow-queries.log
 
 # Setting my.cnf
 if [ ! -f /etc/mysql/my.cnf.default ]; then

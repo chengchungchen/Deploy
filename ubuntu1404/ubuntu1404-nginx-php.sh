@@ -23,9 +23,9 @@ apt-get update
 apt-get install -y nginx php5 php5-cli php5-common php5-curl php5-dev php5-fpm php5-gd php5-mcrypt php5-memcache php5-mysqlnd php5-xmlrpc php5-sqlite php-pear
 
 # Setting the nginx
-mkdir -p /home/www
-mkdir -p /home/log/nginx
-chown -R nginx:nginx /home/www
+mkdir -p /srv/www
+#mkdir -p /home/log/nginx
+chown -R www-data:www-data /srv/www
 mkdir -p /etc/nginx/sites-available
 mkdir -p /etc/nginx/sites-enabled
 if [ ! -f /etc/nginx/conf.d/default.conf ]; then
@@ -49,14 +49,14 @@ fi
 cp -f ./nginx.conf /etc/nginx/nginx.conf
 
 # Setting the PHP5
-mkdir -p /home/log
-touch /home/log/php-fpm.log
+#mkdir -p /home/log
+#touch /home/log/php-fpm.log
 
 # Setting the php-fpm.conf
-if [ ! -f /etc/php5/fpm/php-fpm.conf.default ]; then
-	cp /etc/php5/fpm/php-fpm.conf /etc/php5/fpm/php-fpm.conf.default
-fi
-sed -i 's/var\/log\/php5-fpm.log/home\/log\/php-fpm.log/g' /etc/php5/fpm/php-fpm.conf
+#if [ ! -f /etc/php5/fpm/php-fpm.conf.default ]; then
+#	cp /etc/php5/fpm/php-fpm.conf /etc/php5/fpm/php-fpm.conf.default
+#fi
+#sed -i 's/var\/log\/php5-fpm.log/home\/log\/php-fpm.log/g' /etc/php5/fpm/php-fpm.conf
 
 # Setting the php.ini
 if [ ! -f /etc/php5/fpm/php.ini.default ]; then
@@ -67,22 +67,22 @@ sed -i 's/expose_php = On/expose_php = Off/g' /etc/php5/fpm/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 128M/g' /etc/php5/fpm/php.ini
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php5/fpm/php.ini
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' /etc/php5/fpm/php.ini
-sed -i 's/;date.timezone =/date.timezone = "Asia/Taipei"/g' /etc/php5/fpm/php.ini
+sed -i 's/;date.timezone =/date.timezone = "Asia\/Taipei"/g' /etc/php5/fpm/php.ini
 
 # Setting the www.conf
 if [ ! -f /etc/php5/fpm/pool.d/www.conf.default ]; then
 	cp /etc/php5/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf.default
 fi
-sed -i 's/www-data/nginx/g' /etc/php5/fpm/pool.d/www.conf
+#sed -i 's/www-data/nginx/g' /etc/php5/fpm/pool.d/www.conf
 
 # Setting logrotate
-mkdir -p /root/defaultfile
-if [ -f /etc/logroate.d/nginx ]; then
-	mv /etc/logroate.d/nginx /root/defaultfile/etc.logroate.d.nginx
-fi
-cp etc.logrotate.d.nginx /etc/logrotate.d/nginx
+#mkdir -p /root/defaultfile
+#if [ -f /etc/logroate.d/nginx ]; then
+#	mv /etc/logroate.d/nginx /root/defaultfile/etc.logroate.d.nginx
+#fi
+#cp etc.logrotate.d.nginx /etc/logrotate.d/nginx
 
-if [ -f /etc/logroate.d/php5-fpm ]; then
-	mv /etc/logroate.d/php5-fpm /root/defaultfile/etc.logroate.d.php5-fpm
-fi
-cp etc.logrotate.d.php5-fpm /etc/logrotate.d/php5-fpm
+#if [ -f /etc/logroate.d/php5-fpm ]; then
+#	mv /etc/logroate.d/php5-fpm /root/defaultfile/etc.logroate.d.php5-fpm
+#fi
+#cp etc.logrotate.d.php5-fpm /etc/logrotate.d/php5-fpm

@@ -66,7 +66,7 @@ sed -i 's/expose_php = On/expose_php = Off/g' /opt/rh/php54/root/etc/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 128M/g' /opt/rh/php54/root/etc/php.ini
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /opt/rh/php54/root/etc/php.ini
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' /opt/rh/php54/root/etc/php.ini
-sed -i 's/;date.timezone =/date.timezone = "Asia/Taipei"/g' /opt/rh/php54/root/etc/php.ini
+sed -i 's/;date.timezone =/date.timezone = "Asia\/Taipei"/g' /opt/rh/php54/root/etc/php.ini
 
 # Setting the www.conf
 if [ ! -f /opt/rh/php54/root/etc/php-fpm.d/www.conf.default ]; then
