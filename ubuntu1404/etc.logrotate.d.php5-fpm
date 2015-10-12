@@ -1,7 +1,9 @@
-#/opt/rh/php54/root/var/log/php-fpm/*log {
-/home/log/php5-fpm.log {
+/var/log/php5-fpm.log {
+    rotate 12
+    weekly
     missingok
     notifempty
+    compress
     sharedscripts
     delaycompress
     postrotate

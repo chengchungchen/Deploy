@@ -41,7 +41,7 @@ myisam-recover-options = BACKUP
 
 #query_cache_type        = 1
 #query_cache_limit       = 2M
-# for ram >4G:64M, 1~2G:32M, 512M:16M, <=128M:none 
+# for ram >4G:64M, 1~2G:32M, 512M:16M, <=128M:none, large ~ 128M
 #query_cache_size        = 32M
 
 [mysqldump]
