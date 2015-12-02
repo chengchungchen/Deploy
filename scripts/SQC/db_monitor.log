@@ -1,0 +1,11 @@
+--2015-08-07 10:10:01--  http://sqc.yam.com/sqc/status.jsp?sid=8&status=on&url=blog-slave-db-209
+Resolving sqc.yam.com... 10.1.9.93
+Connecting to sqc.yam.com|10.1.9.93|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: “/root/scripts/SQC/db_monitor.html”
+
+     0K                                                        4.59M=0s
+
+2015-08-07 10:10:01 (4.59 MB/s) - “/root/scripts/SQC/db_monitor.html” saved [44]
+
