@@ -56,6 +56,9 @@ if [ ! -f /opt/rh/php54/root/etc/php-fpm.conf.default ]; then
 	cp /opt/rh/php54/root/etc/php-fpm.conf /opt/rh/php54/root/etc/php-fpm.conf.default
 fi
 sed -i 's/opt\/rh\/php54\/root\/var\/log\/php-fpm\/error.log/home\/log\/php-fpm.log/g' /opt/rh/php54/root/etc/php-fpm.conf
+sed -i 's/;emergency_restart_threshold = 0/emergency_restart_threshold = 10/g' /opt/rh/php54/root/etc/php-fpm.conf
+sed -i 's/;emergency_restart_interval = 0/emergency_restart_interval = 1m/g' /opt/rh/php54/root/etc/php-fpm.conf
+sed -i 's/;process_control_timeout = 0/process_control_timeout = 10s/g' /opt/rh/php54/root/etc/php-fpm.conf
 
 # Setting the php.ini
 if [ ! -f /opt/rh/php54/root/etc/php.ini.default ]; then
