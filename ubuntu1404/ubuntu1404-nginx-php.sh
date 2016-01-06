@@ -20,7 +20,7 @@ echo "deb-src http://nginx.org/packages/ubuntu/ $codename nginx" >> /etc/apt/sou
 apt-get update
 
 # Install Nginx and PHP5
-apt-get install -y nginx php5 php5-cli php5-common php5-curl php5-dev php5-fpm php5-gd php5-mcrypt php5-memcache php5-mysqlnd php5-xmlrpc php5-sqlite php-pear
+apt-get install -y nginx php5 php5-cli php5-common php5-curl php5-dev php5-fpm php5-gd php5-mcrypt php5-memcache php5-mysqlnd php5-xmlrpc php5-sqlite php5-sybase php-pear php-db php-gettext
 
 # Setting the nginx
 mkdir -p /srv/www
