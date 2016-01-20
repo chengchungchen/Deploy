@@ -13,6 +13,7 @@ yum update -y
 # Setting the SELinux
 setenforce 0
 sed -i 's/=enforcing/=permissive/g' /etc/sysconfig/selinux
+sed -i 's/=enforcing/=permissive/g' /etc/selinux/config
 
 # Turn off the firewall
 /etc/init.d/iptables stop
