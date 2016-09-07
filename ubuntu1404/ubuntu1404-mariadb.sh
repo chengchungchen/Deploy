@@ -30,17 +30,17 @@ chown mysql /var/log/mysql/mysql-slow-queries.log
 
 # Setting my.cnf
 if [ ! -f /etc/mysql/my.cnf.default ]; then
-        cp /etc/mysql/my.cnf /etc/mysql/my.cnf.default
+    cp /etc/mysql/my.cnf /etc/mysql/my.cnf.default
 fi
 
 if [ ! -d /etc/mysql/conf.d.default ]; then
-        cp -r /etc/mysql/conf.d /etc/mysql/conf.d.default
+    cp -r /etc/mysql/conf.d /etc/mysql/conf.d.default
 fi
 cp -f my.cnf /etc/mysql/my.cnf
 cp -rf conf.d /etc/mysql/
 
 mkdir -p /root/defaultfile
 if [ -f /etc/logrotate.d/mysql ]; then
-        mv /etc/logrotate.d/mysql /root/defaultfile/etc.logrotate.d.mysql
+    mv /etc/logrotate.d/mysql /root/defaultfile/etc.logrotate.d.mysql
 fi
 cp -f etc.logrotate.d.mysql /etc/logrotate.d/mysql

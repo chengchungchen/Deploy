@@ -25,14 +25,14 @@ exit
 mkdir -p /etc/nginx/sites-available
 mkdir -p /etc/nginx/sites-enabled
 if [ ! -f /etc/nginx/conf.d/default.conf ]; then
-	mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.defualt
+    mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.defualt
 fi
 if [ ! -f /etc/nginx/conf.d/example_ssl.conf ]; then
-	mv /etc/nginx/conf.d/example_ssl.conf /etc/nginx/conf.d/example_ssl.conf.default
+    mv /etc/nginx/conf.d/example_ssl.conf /etc/nginx/conf.d/example_ssl.conf.default
 fi
 
 if [ ! -f /etc/nginx/fastcgi_params.default ]; then
-	cp /etc/nginx/fastcgi_params /etc/nginx/fastcgi_params.default
+    cp /etc/nginx/fastcgi_params /etc/nginx/fastcgi_params.default
 fi
 sed -i '$G' /etc/nginx/fastcgi_params
 sed -i '$a # yam setting' /etc/nginx/fastcgi_params
@@ -40,7 +40,7 @@ sed -i '$a #fastcgi_param   SERVER_ENV              "develop";' /etc/nginx/fastc
 sed -i '$a #fastcgi_param   SERVER_ENV              "production";' /etc/nginx/fastcgi_params
 
 if [ ! -f /etc/nginx/nginx.conf.default ]; then
-	cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default
+    cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default
 fi
 cp -f ./nginx.conf /etc/nginx/nginx.conf
 
@@ -50,6 +50,6 @@ if [ ! -d /root/defaultfile ]; then
 fi
 
 if [ -f /etc/logroate.d/nginx ]; then
-	mv /etc/logroate.d/nginx /root/defaultfile/etc.logroate.d.nginx
+    mv /etc/logroate.d/nginx /root/defaultfile/etc.logroate.d.nginx
 fi
 cp etc.logrotate.d.nginx /etc/logrotate.d/nginx

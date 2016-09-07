@@ -39,7 +39,7 @@ sed -i '$a /usr/local/lib64' /etc/ld.so.conf
 
 # Setting snmpd
 if [ ! -f /etc/snmp/snmpd.conf-default ]; then
-	cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf-default
+    cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf-default
 fi
 echo "rocommunity YamFM" > /etc/snmp/snmpd.conf
 service snmpd start
