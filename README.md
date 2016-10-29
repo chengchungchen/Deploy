@@ -1,2 +1,2 @@
 #Deploy Script
-These scirpt I use to Deploy my server.
+These scirpt I use to deploy my server.
