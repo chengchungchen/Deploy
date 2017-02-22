@@ -1,0 +1,38 @@
+[mysqld]
+# Path to Galera library
+# For percona centos
+#wsrep_provider=/usr/lib64/libgalera_smm.so
+# For mariadb centos
+wsrep_provider=/usr/lib64/galera/libgalera_smm.so
+
+# Cluster connection URL contains the IPs of node#1, node#2 and node#3
+#wsrep_cluster_address=gcomm://10.2.10.123
+wsrep_cluster_address="gcomm://"
+
+# In order for Galera to work correctly binlog format should be ROW
+##binlog_format=ROW
+
+# MyISAM storage engine has only experimental support
+##default_storage_engine=InnoDB
+
+# This changes how InnoDB autoincrement locks are managed and is a requirement for Galera
+innodb_autoinc_lock_mode=2
+
+# Node #1 address
+wsrep_node_address=192.168.1.1
+
+# SST method
+# For perocna centos
+#wsrep_sst_method=xtrabackup
+wsrep_sst_method=xtrabackup-v2
+# If no install xtrabackup, use rsync, but it read-only
+#wsrep_sst_method=rsync
+
+# Cluster name
+wsrep_cluster_name=dbcluster
+
+# Authentication for SST method
+wsrep_sst_auth="sstuser:s3cret"
+
+# Enable MyISAM wsrep replicate
+wsrep_replicate_myisam=ON

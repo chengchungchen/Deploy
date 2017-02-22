@@ -1,0 +1,23 @@
+## InnoDB Setting
+[mysqld]
+default-storage-engine  = InnoDB
+# for normal: MIXED, galera: ROW
+binlog-format = ROW     #for InnoDB read_comminttd or read_uncommitted
+innodb_flush_log_at_trx_commit = 0
+innodb_file_per_table   = 1
+innodb_data_file_path   = ibdata1:10M:autoextend:max:1G
+innodb_strict_mode      = 1
+innodb_buffer_pool_size = 128M
+# 25% of innodb_buffer_pool_size,  but do not over 256MB.
+innodb_log_file_size    = 32M
+innodb_file_format      = barracuda
+innodb_flush_method     = O_DIRECT
+innodb_log_buffer_size  = 8M
+innodb_open_files       = 400
+innodb_io_capacity      = 400
+#innodb_buffer_pool_instances = 3
+#innodb_read_io_threads  = 4
+#innodb_write_io_threads  = 4
+
+#innodb_buffer_pool_dump_at_shutdown = 1;
+#innodb_buffer_pool_load_at_startup = 1;
